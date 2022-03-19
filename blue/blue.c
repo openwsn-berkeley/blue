@@ -1,34 +1,61 @@
-/*********************************************************************
-*                    SEGGER Microcontroller GmbH                     *
-*                        The Embedded Experts                        *
-**********************************************************************
+#include "nrf52840.h"
 
--------------------------- END-OF-HEADER -----------------------------
+//=========================== defines =========================================
 
-File    : main.c
-Purpose : Generic application start
+// https://infocenter.nordicsemi.com/index.jsp?topic=%2Fug_nrf52840_dk%2FUG%2Fdk%2Fhw_buttons_leds.html
+// LED 1 P0.13
+// LED 2 P0.14
+// LED 3 P0.15
+// LED 4 P0.16
 
-*/
+//=========================== prototypes ======================================
 
-#include <stdio.h>
-#include <stdlib.h>
+//=========================== variables =======================================
 
-/*********************************************************************
-*
-*       main()
-*
-*  Function description
-*   Application entry point.
-*/
+typedef struct {
+    uint32_t       dummy;
+} app_vars_t;
+
+app_vars_t app_vars;
+
+typedef struct {
+    uint32_t       dummy;
+} app_dbg_t;
+
+app_dbg_t app_dbg;
+
+//=========================== main ============================================
+
 int main(void) {
-  int i;
+    
+    // all LEDs enabled
+    NRF_P0->PIN_CNF[13]                = 0x00000003;            // LED 1
+    NRF_P0->PIN_CNF[14]                = 0x00000003;            // LED 2
+    NRF_P0->PIN_CNF[15]                = 0x00000003;            // LED 3
+    NRF_P0->PIN_CNF[16]                = 0x00000003;            // LED 4
 
-  for (i = 0; i < 100; i++) {
-    printf("Hello World %d!\n", i);
-  }
-  do {
-    i++;
-  } while (1);
+    // all LEDs off
+    NRF_P0->OUTSET                     = (0x00000001 << 13);    // LED 1
+    NRF_P0->OUTSET                     = (0x00000001 << 14);    // LED 2
+    NRF_P0->OUTSET                     = (0x00000001 << 15);    // LED 3
+    NRF_P0->OUTSET                     = (0x00000001 << 16);    // LED 4
+
+    // all LEDs on
+    //NRF_P0->OUTCLR                   = (0x00000001 << 13);    // LED 1
+    //NRF_P0->OUTCLR                   = (0x00000001 << 14);    // LED 2
+    NRF_P0->OUTCLR                     = (0x00000001 << 16);    // LED 3
+    //NRF_P0->OUTCLR                   = (0x00000001 << 15);    // LED 4
+
+    // loop
+    while(1) {
+
+        // wait for event
+        __SEV(); // set event
+        __WFE(); // wait for event
+        __WFE(); // wait for event
+    }
 }
 
-/*************************** End of file ****************************/
+//=========================== helpers =========================================
+
+//=========================== interrupt handlers ==============================

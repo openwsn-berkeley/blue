@@ -34,7 +34,7 @@
       linker_section_placement_file="$(ProjectDir)/flash_placement.xml"
       macros="NRFHeaderFile=$(PackagesDir)/nRF/Device/Include/nrf.h;DeviceHeaderFile=$(PackagesDir)/nRF/Device/Include/nrf52840.h;DeviceSystemFile=$(PackagesDir)/nRF/Device/Source/system_nrf52.c;DeviceVectorsFile=$(PackagesDir)/nRF/Device/Startup/ses_startup_nrf52840.s;DeviceLinkerScript=$(PackagesDir)/nRF/Device/Linker/ses_nrf52840_xxaa.icf;DeviceMemoryMap=$(PackagesDir)/nRF/Device/MemoryMap/nRF52840_xxAA_MemoryMap.xml;DeviceLibraryIdentifier=M4lf;DeviceFamily=nRF;Target=nRF52840_xxAA;Placement=Flash"
       package_dependencies="CMSIS-CORE_V5"
-      project_directory=""
+      project_directory="blue"
       project_type="Executable"
       target_reset_script="Reset();"
       target_script_file="$(ProjectDir)/nRF_Target.js"
@@ -117,7 +117,7 @@
       linker_section_placement_file="$(ProjectDir)/flash_placement.xml"
       macros="NRFHeaderFile=$(PackagesDir)/nRF/Device/Include/nrf.h;DeviceHeaderFile=$(PackagesDir)/nRF/Device/Include/nrf52840.h;DeviceSystemFile=$(PackagesDir)/nRF/Device/Source/system_nrf52.c;DeviceVectorsFile=$(PackagesDir)/nRF/Device/Startup/ses_startup_nrf52840.s;DeviceLinkerScript=$(PackagesDir)/nRF/Device/Linker/ses_nrf52840_xxaa.icf;DeviceMemoryMap=$(PackagesDir)/nRF/Device/MemoryMap/nRF52840_xxAA_MemoryMap.xml;DeviceLibraryIdentifier=M4lf;DeviceFamily=nRF;Target=nRF52840_xxAA;Placement=Flash"
       package_dependencies="CMSIS-CORE_V5"
-      project_directory="../app1"
+      project_directory="app1"
       project_type="Executable"
       target_reset_script="Reset();"
       target_script_file="$(ProjectDir)/nRF_Target.js"
@@ -155,9 +155,6 @@
       </file>
     </folder>
   </project>
-  
-  
-  
   <project Name="app2">
     <configuration
       CMSIS_CORE="Yes"
@@ -192,7 +189,7 @@
       linker_section_placement_file="$(ProjectDir)/flash_placement.xml"
       macros="NRFHeaderFile=$(PackagesDir)/nRF/Device/Include/nrf.h;DeviceHeaderFile=$(PackagesDir)/nRF/Device/Include/nrf52840.h;DeviceSystemFile=$(PackagesDir)/nRF/Device/Source/system_nrf52.c;DeviceVectorsFile=$(PackagesDir)/nRF/Device/Startup/ses_startup_nrf52840.s;DeviceLinkerScript=$(PackagesDir)/nRF/Device/Linker/ses_nrf52840_xxaa.icf;DeviceMemoryMap=$(PackagesDir)/nRF/Device/MemoryMap/nRF52840_xxAA_MemoryMap.xml;DeviceLibraryIdentifier=M4lf;DeviceFamily=nRF;Target=nRF52840_xxAA;Placement=Flash"
       package_dependencies="CMSIS-CORE_V5"
-      project_directory="../app2"
+      project_directory="app2"
       project_type="Executable"
       target_reset_script="Reset();"
       target_script_file="$(ProjectDir)/nRF_Target.js"
@@ -230,9 +227,4 @@
       </file>
     </folder>
   </project>
-  
-  
-  
-  
-  
 </solution>

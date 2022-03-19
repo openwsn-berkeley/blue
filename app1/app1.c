@@ -41,9 +41,9 @@ int main(void) {
     NRF_P0->OUTSET                     = (0x00000001 << 16);    // LED 4
 
     // all LEDs on
-    NRF_P0->OUTCLR                   = (0x00000001 << 13);    // LED 1
+    NRF_P0->OUTCLR                   = (0x00000001 << 13);      // LED 1
     //NRF_P0->OUTCLR                   = (0x00000001 << 14);    // LED 2
-    //NRF_P0->OUTCLR                     = (0x00000001 << 16);    // LED 3
+    //NRF_P0->OUTCLR                     = (0x00000001 << 16);  // LED 3
     //NRF_P0->OUTCLR                   = (0x00000001 << 15);    // LED 4
 
     // loop

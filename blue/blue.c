@@ -1,4 +1,5 @@
 #include "nrf52840.h"
+#include "app.h"
 
 //=========================== defines =========================================
 
@@ -10,21 +11,19 @@
 
 //=========================== prototypes ======================================
 
-int main_app(void);
-
 //=========================== variables =======================================
 
 typedef struct {
     uint32_t       dummy;
-} app_vars_t;
+} blue_vars_t;
 
-app_vars_t app_vars;
+blue_vars_t blue_vars;
 
 typedef struct {
     uint32_t       dummy;
-} app_dbg_t;
+} blue_dbg_t;
 
-app_dbg_t app_dbg;
+blue_dbg_t blue_dbg;
 
 //=========================== main ============================================
 
@@ -49,22 +48,7 @@ int main(void) {
     //NRF_P0->OUTCLR                   = (0x00000001 << 15);    // LED 4
 
     // handover to app
-    return main_app();
-}
-
-int __attribute((section(".ARM.__at_0x0001000"))) main_app(void) {
-    
-    // LED1 on
-    NRF_P0->OUTCLR                     = (0x00000001 << 13);    // LED 1
-
-    // loop
-    while(1) {
-
-        // wait for event
-        __SEV(); // set event
-        __WFE(); // wait for event
-        __WFE(); // wait for event
-    }
+    return app_main();
 }
 
 //=========================== helpers =========================================

@@ -8,12 +8,14 @@
 
 //=========================== public ==========================================
 
-int __attribute((section(".ARM.__at_0x0001000"))) app_main(void) {
+int __attribute((section(".ARM.__at_0x1000"))) app_main(void) {
     
-    // LED1 on
+    // LED on
     NRF_P0->OUTCLR                     = (0x00000001 << 13);    // LED 1
+    //NRF_P0->OUTCLR                     = (0x00000001 << 14);    // LED 2
 
     // loop
+    /*
     while(1) {
 
         // wait for event
@@ -21,6 +23,7 @@ int __attribute((section(".ARM.__at_0x0001000"))) app_main(void) {
         __WFE(); // wait for event
         __WFE(); // wait for event
     }
+    */
 }
 
 //=========================== private =========================================

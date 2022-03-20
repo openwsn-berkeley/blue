@@ -11,6 +11,8 @@
 
 //=========================== prototypes ======================================
 
+typedef int appfunc_t(void);
+
 //=========================== variables =======================================
 
 typedef struct {
@@ -28,7 +30,8 @@ blue_dbg_t blue_dbg;
 //=========================== main ============================================
 
 int main(void) {
-    
+    appfunc_t* appfunc = (appfunc_t*)0x00001001;
+
     // all LEDs enabled
     NRF_P0->PIN_CNF[13]                = 0x00000003;            // LED 1
     NRF_P0->PIN_CNF[14]                = 0x00000003;            // LED 2
@@ -44,11 +47,12 @@ int main(void) {
     // LED3 on
     //NRF_P0->OUTCLR                   = (0x00000001 << 13);    // LED 1
     //NRF_P0->OUTCLR                   = (0x00000001 << 14);    // LED 2
-    NRF_P0->OUTCLR                     = (0x00000001 << 16);    // LED 3
-    //NRF_P0->OUTCLR                   = (0x00000001 << 15);    // LED 4
-
+    NRF_P0->OUTCLR                     = (0x00000001 << 15);    // LED 3
+    //NRF_P0->OUTCLR                   = (0x00000001 << 16);    // LED 4
+    
     // handover to app
-    return app_main();
+    app_main();
+    return appfunc();
 }
 
 //=========================== helpers =========================================

@@ -10,6 +10,8 @@
 
 //=========================== prototypes ======================================
 
+int main_app(void);
+
 //=========================== variables =======================================
 
 typedef struct {
@@ -40,11 +42,20 @@ int main(void) {
     NRF_P0->OUTSET                     = (0x00000001 << 15);    // LED 3
     NRF_P0->OUTSET                     = (0x00000001 << 16);    // LED 4
 
-    // all LEDs on
+    // LED3 on
     //NRF_P0->OUTCLR                   = (0x00000001 << 13);    // LED 1
     //NRF_P0->OUTCLR                   = (0x00000001 << 14);    // LED 2
     NRF_P0->OUTCLR                     = (0x00000001 << 16);    // LED 3
     //NRF_P0->OUTCLR                   = (0x00000001 << 15);    // LED 4
+
+    // handover to app
+    return main_app();
+}
+
+int __attribute((section(".ARM.__at_0x0001000"))) main_app(void) {
+    
+    // LED1 on
+    NRF_P0->OUTCLR                     = (0x00000001 << 13);    // LED 1
 
     // loop
     while(1) {

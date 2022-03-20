@@ -30,6 +30,7 @@
       debug_target_connection="J-Link"
       gcc_entry_point="Reset_Handler"
       link_linker_script_file="$(ProjectDir)/ses_nrf52840_xxaa.icf"
+      linker_log_file="Yes"
       linker_memory_map_file="$(ProjectDir)/nRF52840_xxAA_MemoryMap.xml"
       linker_output_format="hex"
       linker_section_placement_file="$(ProjectDir)/flash_placement.xml"

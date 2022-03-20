@@ -1,5 +1,3 @@
-/app1/Output
-/app2/Output
-/blue/Output
+/Output
 *.jlink
 *.emSession

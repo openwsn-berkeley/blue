@@ -39,7 +39,9 @@ define memory with size = 4G;
 //
 // Combined regions per memory type
 //
-define region FLASH = FLASH1;
+define region APP1  = [from 512k size 4k];
+define region APP2  = [from 768k size 4k];
+define region FLASH = FLASH1 - APP1 - APP2;
 define region RAM   = RAM1;
 
 //
@@ -70,6 +72,13 @@ initialize by symbol __SEGGER_init_heap     { block heap  };                    
 initialize by symbol __SEGGER_init_ctors    { block ctors };                                        // Call constructors for global objects which need to be constructed before reaching main (if any). Make sure this is done after setting up heap.
 
 //
+// Explicit placement in APP1
+//
+place in APP1                               { section .app1 };
+keep                                        { symbol app_main };
+
+
+//
 // Explicit placement in FLASHn
 //
 place in FLASH1                             { section .FLASH1, section .FLASH1.* };
@@ -78,18 +87,18 @@ place in EXTFLASH1                          { section .EXTFLASH1, section .EXTFL
 //
 // FLASH Placement
 //
-place at start of FLASH                     { block vectors };                            // Vector table section
-place in FLASH with minimum size order      { section .init,   section .init.*,            // Init code section
+place at start of FLASH                     { block vectors };                              // Vector table section
+place in FLASH with minimum size order      { section .init,   section .init.*,             // Init code section
                                               section .init_rodata, section .init_rodata.*, // Init read-only section
                                               section .text,   section .text.*,             // Code section
                                               section .rodata, section .rodata.*,           // Read-only data section
                                               section .segger.*,                            // Auto-generated initialization
-                                              section .ARM.extab.*,                                 // ARM exception table
+                                              section .ARM.extab.*,                         // ARM exception table
                                               block exidx,                                  // ARM exception unwinding block
                                               block ctors,                                  // Constructors block
-                                              block dtors };                               // Destructors block
+                                              block dtors };                                // Destructors block
 
-place in FLASH                              { block tdata_load };                         // Thread-local-storage load image
+place in FLASH                              { block tdata_load };                           // Thread-local-storage load image
 
 //
 // Explicit placement in RAMn

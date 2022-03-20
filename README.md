@@ -10,7 +10,19 @@ Missing:
 
 ## User Guide
 
-TODO
+- load hed file onto board
+- when runs for the first time:
+    - LED3 is on indicating the bootloader ran
+    - LED1 is on indicating the first app is running
+- reset the board
+    - LED3 is on indicating the bootloader ran
+    - there a little delay for the bootloading to happen
+    - LED2 is on indicating the second app is running
+- reset the board 
+    - LED3 is on indicating the bootloader ran
+    - no delay as the second app is already in place
+    - LED2 is on indicating the second app is running
+- last step repeats no matter how often you reset the board
 
 ## HEX file format
 
